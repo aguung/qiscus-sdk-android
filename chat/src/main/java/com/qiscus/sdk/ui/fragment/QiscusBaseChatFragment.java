@@ -52,8 +52,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
-import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.ui.PlacePicker;
 import com.qiscus.jupuk.JupukBuilder;
 import com.qiscus.jupuk.JupukConst;
 import com.qiscus.manggil.ui.MentionsEditText;
@@ -93,6 +91,7 @@ import com.qiscus.sdk.util.QiscusNumberUtil;
 import com.qiscus.sdk.util.QiscusPermissionsUtil;
 import com.qiscus.sdk.util.QiscusRawDataExtractor;
 import com.qiscus.sdk.util.QiscusTextUtil;
+import com.rtchagas.pingplacepicker.PingPlacePicker;
 import com.trello.rxlifecycle.components.support.RxFragment;
 import com.vanniktech.emoji.EmojiEditText;
 import com.vanniktech.emoji.EmojiPopup;
@@ -1325,10 +1324,12 @@ public abstract class QiscusBaseChatFragment<T extends QiscusBaseChatAdapter> ex
 
     protected void addLocation() {
         if (QiscusPermissionsUtil.hasPermissions(getActivity(), LOCATION_PERMISSION)) {
-            PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
+            PingPlacePicker.IntentBuilder builder = new PingPlacePicker.IntentBuilder();
+            builder.setAndroidApiKey(getString(R.string.qiscus_key_google_apis_android))
+                    .setGeolocationApiKey(getString(R.string.qiscus_key_google_apis_geolocation));
             try {
                 startActivityForResult(builder.build(getActivity()), PICK_LOCATION_REQUEST);
-            } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
+            } catch (GooglePlayServicesNotAvailableException e) {
                 e.printStackTrace();
             }
             hideAttachmentPanel();

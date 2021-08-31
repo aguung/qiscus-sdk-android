@@ -135,8 +135,8 @@ dependencies {
     api 'com.schinizer:rxunfurl:0.2.0'
 
     //Mqtt
-    api 'com.qiscus.mqtt:client:1.1.1'
-    api 'com.qiscus.mqtt:android:1.1.1-q1'
+    api 'com.qiscus.mqtt:client:1.1.2'
+    api 'com.qiscus.mqtt:android:1.1.2'
 
     //Push notification
     api "com.google.firebase:firebase-core:${playServicesLibVersion}"
@@ -156,5 +156,6 @@ dependencies {
     api 'com.qiscus.utils:jupuk:1.1.0'
 
     //Place picker
-    api "com.google.android.gms:play-services-places:${playServicesLibVersion}"
+    implementation "com.github.adicatur:pingplacepicker:v1.0.5a"
+    implementation "com.google.android.libraries.places:places:1.1.0"
 }
