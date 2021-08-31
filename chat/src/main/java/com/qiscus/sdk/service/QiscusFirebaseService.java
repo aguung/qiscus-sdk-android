@@ -16,6 +16,9 @@
 
 package com.qiscus.sdk.service;
 
+import androidx.annotation.NonNull;
+
+
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.qiscus.sdk.Qiscus;
@@ -31,6 +34,12 @@ public class QiscusFirebaseService extends FirebaseMessagingService {
         if (handleMessageReceived(remoteMessage)) {
             return;
         }
+    }
+
+    @Override
+    public void onNewToken(@NonNull String s) {
+        super.onNewToken(s);
+        Qiscus.setFcmToken(s);
     }
 
     /**

@@ -138,8 +138,8 @@ dependencies {
     api "com.qiscus.mqtt:android:1.1.2"
 
     //Push notification
-    api "com.google.firebase:firebase-core:${playServicesLibVersion}"
-    api "com.google.firebase:firebase-messaging:${playServicesLibVersion}"
+    api "com.google.firebase:firebase-core:19.0.0"
+    api "com.google.firebase:firebase-messaging:22.0.0"
 
     //Image loader
     api 'com.qiscus.utils:nirmana:1.2.0'

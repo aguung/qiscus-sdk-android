@@ -16,15 +16,15 @@
 
 package com.qiscus.sdk.service;
 
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.FirebaseInstanceIdService;
-import com.qiscus.sdk.Qiscus;
-
-public class QiscusFirebaseIdService extends FirebaseInstanceIdService {
-
-    @Override
-    public void onTokenRefresh() {
-        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
-        Qiscus.setFcmToken(refreshedToken);
-    }
-}
+//import com.google.firebase.iid.FirebaseInstanceId;
+//import com.google.firebase.iid.FirebaseInstanceIdService;
+//import com.qiscus.sdk.Qiscus;
+//
+//public class QiscusFirebaseIdService extends FirebaseInstanceIdService {
+//
+//    @Override
+//    public void onTokenRefresh() {
+//        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
+//        Qiscus.setFcmToken(refreshedToken);
+//    }
+//}

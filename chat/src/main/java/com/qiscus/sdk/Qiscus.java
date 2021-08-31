@@ -23,7 +23,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
 
-import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.installations.FirebaseInstallations;
 import com.google.gson.Gson;
 import com.qiscus.jupuk.Jupuk;
 import com.qiscus.sdk.data.local.QiscusCacheManager;
@@ -504,11 +504,7 @@ public class Qiscus {
             } else {
                 Observable.just(null)
                         .doOnNext(o -> {
-                            try {
-                                FirebaseInstanceId.getInstance().deleteInstanceId();
-                            } catch (IOException ignored) {
-                                //Do nothing
-                            }
+                            FirebaseInstallations.getInstance().delete();
                         })
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
