@@ -135,8 +135,8 @@ dependencies {
     api 'com.schinizer:rxunfurl:0.2.0'
 
     //Mqtt
-    api 'com.qiscus.mqtt:client:1.1.2'
-    api 'com.qiscus.mqtt:android:1.1.2'
+    api 'com.qiscus.mqtt:client:1.1.1'
+    api 'com.qiscus.mqtt:android:1.1.1-q1'
 
     //Push notification
     api "com.google.firebase:firebase-core:${playServicesLibVersion}"
