@@ -52,6 +52,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.libraries.places.api.model.Place;
 import com.qiscus.jupuk.JupukBuilder;
 import com.qiscus.jupuk.JupukConst;
 import com.qiscus.manggil.ui.MentionsEditText;
@@ -1696,7 +1697,7 @@ public abstract class QiscusBaseChatFragment<T extends QiscusBaseChatAdapter> ex
                 cursor.close();
             }
         } else if (requestCode == PICK_LOCATION_REQUEST && resultCode == Activity.RESULT_OK) {
-            Place place = PlacePicker.getPlace(getActivity(), data);
+            Place place = PingPlacePicker.Companion.getPlace(data);
             QiscusLocation location = new QiscusLocation();
             location.setName(place.getName().toString());
             location.setAddress(place.getAddress().toString());
