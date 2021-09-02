@@ -155,6 +155,6 @@ dependencies {
     api 'com.qiscus.utils:jupuk:1.1.0'
 
     //Place picker
-    implementation "com.github.adicatur:pingplacepicker:v1.0.5a"
+    implementation "com.github.devfutech:pingplacepicker:31c94fb5aa"
     implementation "com.google.android.libraries.places:places:1.1.0"
 }
