@@ -152,7 +152,7 @@ dependencies {
     api 'com.google.android:flexbox:0.3.1'
 
     //File picker
-    api 'com.qiscus.utils:jupuk:1.1.0'
+    api 'com.qiscus.utils:jupuk:1.1.2'
 
     //Place picker
     implementation "com.github.devfutech:pingplacepicker:31c94fb5aa"
