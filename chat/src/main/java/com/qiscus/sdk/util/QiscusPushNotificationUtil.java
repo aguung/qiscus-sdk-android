@@ -26,6 +26,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.media.RingtoneManager;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
@@ -265,8 +266,13 @@ public final class QiscusPushNotificationUtil {
         PendingIntent pendingIntent;
         Intent openIntent = new Intent(context, QiscusPushNotificationClickReceiver.class);
         openIntent.putExtra("data", comment);
-        pendingIntent = PendingIntent.getBroadcast(context, QiscusNumberUtil.convertToInt(comment.getRoomId()),
-                openIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            pendingIntent = PendingIntent.getBroadcast(context, QiscusNumberUtil.convertToInt(comment.getRoomId()),
+                    openIntent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_CANCEL_CURRENT);
+        } else {
+            pendingIntent = PendingIntent.getBroadcast(context, QiscusNumberUtil.convertToInt(comment.getRoomId()),
+                    openIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+        }
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context, notificationChannelId);
         notificationBuilder.setContentTitle(pushNotificationMessage.getRoomName())
