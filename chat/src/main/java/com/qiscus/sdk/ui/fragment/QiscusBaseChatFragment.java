@@ -1247,7 +1247,7 @@ public abstract class QiscusBaseChatFragment<T extends QiscusBaseChatAdapter> ex
                     .setColorPrimary(ContextCompat.getColor(getActivity(), chatConfig.getAppBarColor()))
                     .setColorPrimaryDark(ContextCompat.getColor(getActivity(), chatConfig.getStatusBarColor()))
                     .setColorAccent(ContextCompat.getColor(getActivity(), chatConfig.getAccentColor()))
-                    .pickPhoto(this);
+                    .pickPhoto(getActivity());
             hideAttachmentPanel();
         } else {
             requestAddFilePermission();
@@ -1260,7 +1260,7 @@ public abstract class QiscusBaseChatFragment<T extends QiscusBaseChatAdapter> ex
             if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
                 File photoFile = null;
                 try {
-                    photoFile = QiscusImageUtil.createImageFile();
+                    photoFile = QiscusImageUtil.createImageFile(requireContext());
                 } catch (IOException ex) {
                     showError(getString(R.string.qiscus_chat_error_failed_write));
                 }
@@ -1287,7 +1287,7 @@ public abstract class QiscusBaseChatFragment<T extends QiscusBaseChatAdapter> ex
                     .setColorPrimary(ContextCompat.getColor(getActivity(), chatConfig.getAppBarColor()))
                     .setColorPrimaryDark(ContextCompat.getColor(getActivity(), chatConfig.getStatusBarColor()))
                     .setColorAccent(ContextCompat.getColor(getActivity(), chatConfig.getAccentColor()))
-                    .pickDoc(this);
+                    .pickDoc(getActivity());
             hideAttachmentPanel();
         } else {
             requestAddFilePermission();

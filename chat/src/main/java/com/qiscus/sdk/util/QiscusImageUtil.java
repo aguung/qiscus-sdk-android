@@ -16,6 +16,7 @@
 
 package com.qiscus.sdk.util;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -29,6 +30,7 @@ import android.graphics.RectF;
 import android.media.ExifInterface;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.webkit.MimeTypeMap;
 
@@ -256,13 +258,26 @@ public final class QiscusImageUtil {
         }
     }
 
-    public static File createImageFile() throws IOException {
+    public static File createImageFile(Context context) throws IOException {
+        int androidVersion = Build.VERSION.SDK_INT;
         String timeStamp = new SimpleDateFormat("yyyyMMdd-HHmmss", Locale.US).format(new Date());
         String imageFileName = "JPEG-" + timeStamp + "-";
-        File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(imageFileName, ".jpg", storageDir);
-        QiscusCacheManager.getInstance().cacheLastImagePath("file:" + image.getAbsolutePath());
-        return image;
+        if (androidVersion >= 29) {
+            File storageDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+            File image = File.createTempFile(
+                    imageFileName,  /* prefix */
+                    ".jpg",         /* suffix */
+                    storageDir      /* directory */
+            );
+
+            QiscusCacheManager.getInstance().cacheLastImagePath("file:" + image.getAbsolutePath());
+            return image;
+        } else {
+            File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+            File image = File.createTempFile(imageFileName, ".jpg", storageDir);
+            QiscusCacheManager.getInstance().cacheLastImagePath("file:" + image.getAbsolutePath());
+            return image;
+        }
     }
 
     public static Bitmap getCircularBitmap(Bitmap bm) {
