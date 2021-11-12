@@ -1247,7 +1247,7 @@ public abstract class QiscusBaseChatFragment<T extends QiscusBaseChatAdapter> ex
                     .setColorPrimary(ContextCompat.getColor(getActivity(), chatConfig.getAppBarColor()))
                     .setColorPrimaryDark(ContextCompat.getColor(getActivity(), chatConfig.getStatusBarColor()))
                     .setColorAccent(ContextCompat.getColor(getActivity(), chatConfig.getAccentColor()))
-                    .pickPhoto(getActivity());
+                    .pickPhoto(this);
             hideAttachmentPanel();
         } else {
             requestAddFilePermission();
@@ -1287,7 +1287,7 @@ public abstract class QiscusBaseChatFragment<T extends QiscusBaseChatAdapter> ex
                     .setColorPrimary(ContextCompat.getColor(getActivity(), chatConfig.getAppBarColor()))
                     .setColorPrimaryDark(ContextCompat.getColor(getActivity(), chatConfig.getStatusBarColor()))
                     .setColorAccent(ContextCompat.getColor(getActivity(), chatConfig.getAccentColor()))
-                    .pickDoc(getActivity());
+                    .pickDoc(this);
             hideAttachmentPanel();
         } else {
             requestAddFilePermission();
