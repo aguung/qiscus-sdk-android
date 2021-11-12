@@ -258,12 +258,12 @@ public final class QiscusImageUtil {
         }
     }
 
-    public static File createImageFile(Context context) throws IOException {
+    public static File createImageFile() throws IOException {
         int androidVersion = Build.VERSION.SDK_INT;
         String timeStamp = new SimpleDateFormat("yyyyMMdd-HHmmss", Locale.US).format(new Date());
         String imageFileName = "JPEG-" + timeStamp + "-";
         if (androidVersion >= 29) {
-            File storageDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+            File storageDir = Qiscus.getApps().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
             File image = File.createTempFile(
                     imageFileName,  /* prefix */
                     ".jpg",         /* suffix */

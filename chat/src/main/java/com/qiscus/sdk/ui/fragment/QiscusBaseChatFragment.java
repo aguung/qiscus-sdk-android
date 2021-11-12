@@ -1260,7 +1260,7 @@ public abstract class QiscusBaseChatFragment<T extends QiscusBaseChatAdapter> ex
             if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
                 File photoFile = null;
                 try {
-                    photoFile = QiscusImageUtil.createImageFile(requireContext());
+                    photoFile = QiscusImageUtil.createImageFile();
                 } catch (IOException ex) {
                     showError(getString(R.string.qiscus_chat_error_failed_write));
                 }
